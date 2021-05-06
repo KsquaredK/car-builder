@@ -41,8 +41,11 @@ Order #${order.id} cost ${costString}, and was placed on ${order.timestamp}</li>
 export const Orders = () => {
     const orders = getOrders()
     let html = "<ul>"
-    const listItems = orders.map(buildOrderListItem)
-    html += listItems.join("")
+    const ArrayoflistItems = orders.map((orderObj) => {
+        const singularListItemHtml = buildOrderListItem(orderObj)
+        return singularListItemHtml
+    })
+    html += ArrayoflistItems.join("")
     html += "</ul>"
 
     return html

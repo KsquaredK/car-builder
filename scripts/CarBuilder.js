@@ -11,6 +11,7 @@ document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
+            //orderButton is the id given to the button below
             addCustomerOrder()
         }
     }

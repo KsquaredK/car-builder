@@ -5,7 +5,7 @@ document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "interior") {
-            setInterior(parseInt(event.target.value))
+            setInterior(parseInt(event.target.value)) //?? what does this value reference
             window.alert(`You have chosen ${interiors.colorType}`)
         }
     }

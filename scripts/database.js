@@ -60,14 +60,15 @@ export const getTechPacks = () => {
 export const getWheels = () => {
     return [...database.wheels]
 }
-
-/* 
-export const addCustomerOrder = () => {
-const newOrder = {...database.orderBuilder }
-newOrder.id = [...database.customOrders].pop().id + 1
-newOrder.timestamp = Date.now()
-database.customOrders.push(newOrder)
-database.orderBuilder = {}
-document.dispatchEvent(new CustomEvent("stateChanged"))
+export const getOrders = () => {
+    return [...database.customOrders]
 }
-*/
+
+export const addCustomerOrder = () => {
+    const newOrder = {...database.orderBuilder }
+    newOrder.id = [...database.customOrders].pop().id + 1
+    newOrder.timestamp = Date.now()
+    database.customOrders.push(newOrder)
+    database.orderBuilder = {}
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
