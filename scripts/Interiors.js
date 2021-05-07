@@ -2,22 +2,20 @@ import { getInteriors, setInterior } from "./database.js"
 const interiors = getInteriors()
 
 document.addEventListener(
-        "change",
-        (changeEvent) => {
-            if (changeEvent.target.name === "interior") {
-                const interiorId = changeEvent.target.value
-                setInterior(interiorId)
-                for (const interior of interiors) {
-                    if (parseInt(interiorId) === interior.id)
-                        window.alert(`You have selected ${interior.colorType}`)
-                }
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.name === "interior") {
+            const interiorId = changeEvent.target.value
+            setInterior(interiorId)
+            for (const interior of interiors) {
+                if (parseInt(interiorId) === interior.id)
+                    window.alert(`You have selected ${interior.colorType}`)
             }
         }
+    }
 
-    )
-    /* 
-            if (celebrity.id === parseInt(itemClickedId)) //if celebrity primary key matches click target id
-                                    window.alert(`${celebrity.name} is ${celebrity.sport} star`) */
+)
+
 
 export const Interiors = () => {
     let html = "<ul>"

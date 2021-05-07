@@ -49,3 +49,15 @@ export const CarBuilder = () => {
         </article>
     `
 }
+
+/* 
+    Make sure there is a foreign key for each options type on the new object.
+Make sure there is a new primary key value that is 1 greater than the current highest one.
+Make sure there is a timestamp on the order.
+ */
+/* 
+Make sure you clear out the state that was being used to store the user options once the order state is created.
+Trigger the stateChanged custom events and have the main module listen for it and regenerate all of the HTML.
+Once regenerated, the new order should appear in the DOM. Example:
+Order #1 was placed on 16895837301 
+*/
