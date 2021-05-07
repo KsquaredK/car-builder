@@ -4,13 +4,33 @@ import { getTechPacks, setTechPack } from "./database.js"
 const techPacks = getTechPacks()
 
 document.addEventListener(
-    "change", (event) => {
-        if (event.target.name === "techPack") {
-            setTechPack(parseInt(event.target.value))
-            window.alert(`You have chosen ${techPacks.type}`)
+        "change",
+        (changeEvent) => {
+            if (changeEvent.target.name === "techPack") {
+                const techPackId = changeEvent.target.value
+                setTechPack(techPackId)
+                for (const techPack of techPacks) {
+                    if (parseInt(techPackId) === techPack.id)
+                        window.alert(`You have chosen ${techPack.type}`)
+                }
+            }
         }
-    }
-)
+
+    )
+    /* document.addEventListener(
+        "change",
+        (changeEvent) => {
+            if (changeEvent.target.name === "interior") {
+                const interiorId = changeEvent.target.value
+                setInterior(interiorId)
+                for (const interior of interiors) {
+                    if (parseInt(interiorId) === interior.id)
+                        window.alert(`You have selected ${interior.colorType}`)
+                }
+            }
+        }
+
+    ) */
 
 //make rendered html available for import
 export const TechPacks = () => {

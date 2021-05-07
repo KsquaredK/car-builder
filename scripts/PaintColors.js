@@ -3,13 +3,19 @@ const paintColors = getPaintColors()
 
 document.addEventListener(
     "change",
-    (event) => {
-        if (event.target.name === "paintColor") {
-            setPaintColor(parseInt(event.target.value))
-            window.alert(`You have chosen ${paintColors.color}`)
+    (changeEvent) => {
+        if (changeEvent.target.name === "paintColor") {
+            const paintColorId = changeEvent.target.value
+            setPaintColor(paintColorId)
+            for (const paintColor of paintColors) {
+                if (parseInt(paintColorId) === paintColor.id)
+
+                    window.alert(`You have selected ${paintColor.color}`)
+            }
         }
     }
 )
+
 
 export const PaintColors = () => {
     let html = "<ul>"

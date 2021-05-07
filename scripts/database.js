@@ -28,7 +28,8 @@ const database = {
             paintColorId: 3,
             interiorId: 2,
             techPackId: 3,
-            wheelId: 4
+            wheelId: 4,
+            timestamp: 1620059468223,
         }],
         //object that holds transient state (current user's input)
         orderBuilder: {}
@@ -39,7 +40,7 @@ export const setPaintColor = (id) => {
     database.orderBuilder.paintColorId = id
 }
 export const setInterior = (id) => {
-    database.orderBuilder.interiorId = id
+    database.orderBuilder.interiorId = parseInt(id)
 }
 export const setTechPack = (id) => {
     database.orderBuilder.techPackId = id

@@ -3,10 +3,15 @@ const wheels = getWheels()
 
 document.addEventListener(
     "change",
-    (event) => {
-        if (event.target.name === "wheel") {
-            setWheel(parseInt(event.target.value))
-            window.alert(`You have chosen ${wheels.sizeType}`)
+    (changeEvent) => {
+        if (changeEvent.target.name === "wheel") {
+            const wheelId = changeEvent.target.value
+            setWheel(wheelId)
+            for (const wheel of wheels) {
+                if (parseInt(wheelId) === wheel.id)
+
+                    window.alert(`You have selected ${wheel.sizeType}`)
+            }
         }
     }
 )

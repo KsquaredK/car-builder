@@ -1,4 +1,5 @@
 import { getPaintColors, getInteriors, getTechPacks, getWheels, getOrders } from "./database.js"
+console.log("Orders module initialized...")
 
 const buildOrderListItem = (order) => {
     const paintColors = getPaintColors()
@@ -15,8 +16,7 @@ const buildOrderListItem = (order) => {
     const foundInterior = interiors.find(
         (interior) => {
             return interior.id === order.interiorId
-        }
-    )
+        })
     const foundTechPack = techPacks.find(
         (techPack) => {
             return techPack.id === order.techPackId
@@ -30,7 +30,7 @@ const buildOrderListItem = (order) => {
     let totalCost = foundPaintColor.price + foundInterior.price +
         foundTechPack.price + foundWheel.price
 
-    const costString = totalCost.toLocaleString("en-US", {
+    let costString = totalCost.toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
     })
@@ -39,6 +39,7 @@ Order #${order.id} cost ${costString}, and was placed on ${order.timestamp}</li>
 }
 
 export const Orders = () => {
+    console.log("Orders function invoked...")
     const orders = getOrders()
     let html = "<ul>"
     const ArrayoflistItems = orders.map((orderObj) => {
