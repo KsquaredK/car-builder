@@ -53,28 +53,31 @@ export const Orders = () => {
     console.log("Orders function invoked...")
 
     const orders = getOrders()
-    let totalCost = 0
-    const arrayOfHTMLStrings = orders.map(
-            (order) => {
-                const foundPaintColor = paintColors.find(paintColor => paintColor.id === order.paintColorId)
-                totalCost += foundPaintColor.price
-                const foundInterior = interiors.find(interior => interior.id === order.interiorId)
-                totalCost += foundInterior.price
-                const foundTechPack = techPacks.find(techPack => techPack.id === order.techPackId)
-                totalCost += foundTechPack.price
-                const foundWheel = wheels.find(wheel => wheel.id === order.wheelId)
-                totalCost += foundWheel.price
+    const arrayOfOptionsHTMLStrings = orders.map(
+        (order) => {
+            let totalCost = 0
 
-            })
-        /* 
-         
-            const foundPaintColor = paintColors.find(
-                (paintColorObj) => {
-                    if (paintColorObj.id === paintColor.id) {
-                        return true
-                    }
+            const foundPaintColor = paintColors.find(paintColor => paintColor.id === order.paintColorId)
+            totalCost += foundPaintColor.price
+            const foundInterior = interiors.find(interior => interior.id === order.interiorId)
+            totalCost += foundInterior.price
+            const foundTechPack = techPacks.find(techPack => techPack.id === order.techPackId)
+            totalCost += foundTechPack.price
+            const foundWheel = wheels.find(wheel => wheel.id === order.wheelId)
+            totalCost += foundWheel.price
+
+        })
+
+
+    /* 
+     
+        const foundPaintColor = paintColors.find(
+            (paintColorObj) => {
+                if (paintColorObj.id === paintColor.id) {
+                    return true
                 }
-            ) */
+            }
+        ) */
 
 
 
@@ -83,7 +86,7 @@ export const Orders = () => {
         const singularListItemHtml = buildOrderListItem(orderObj)
         return singularListItemHtml
     })
-    html += arrayOfHTMLStrings.join("")
+    html += arrayOfOptionsHTMLStrings.join("")
     html += "</ul>"
 
     return html
