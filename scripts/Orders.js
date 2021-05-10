@@ -6,33 +6,41 @@ const interiors = getInteriors()
 const techPacks = getTechPacks()
 const wheels = getWheels()
 
+
+//iterate arrays of features to define custom order and render html of cost and date
 const buildOrderListItem = (order) => {
+    //locates object from order using keys
     const foundPaintColor = paintColors.find(
-        (paintColor) => {
-            return paintColor.id === order.paintColorId
-        }
-    )
+            (paintColor) => {
+                return paintColor.id === order.paintColorId
+            }
+        )
+        //locates object from order using keys
     const foundInterior = interiors.find(
-        (interior) => {
-            return interior.id === order.interiorId
-        })
+            (interior) => {
+                return interior.id === order.interiorId
+            })
+        //locates object from order using keys
     const foundTechPack = techPacks.find(
-        (techPack) => {
-            return techPack.id === order.techPackId
-        }
-    )
+            (techPack) => {
+                return techPack.id === order.techPackId
+            }
+        )
+        //locates object from order using keys
     const foundWheel = wheels.find(
-        (wheel) => {
-            return wheel.id === order.wheelId
-        }
-    )
+            (wheel) => {
+                return wheel.id === order.wheelId
+            }
+        )
+        //new variable sums .price values of above objects
     let totalCost = foundPaintColor.price + foundInterior.price +
         foundTechPack.price + foundWheel.price
-
+        //new variable holds total cost converted to string (currency expression based on location)
     let costString = totalCost.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD"
-    })
+            style: "currency",
+            currency: "USD"
+        })
+        //after executing the above code block, return the result rendered as html 
     return `<li>
 Order #${order.id} cost ${costString}, and was placed on ${order.timestamp}</li>`
 }
@@ -53,6 +61,19 @@ export const Orders = () => {
     console.log("Orders function invoked...")
 
     const orders = getOrders()
+
+    let html = "<ul>"
+    const listFeatures = orders.map(buildOrderListItem)
+    html += listFeatures.join("")
+    html += "</ul>"
+
+    return html
+}
+
+/*  export const Orders = () => {
+    console.log("Orders function invoked...")
+
+    const orders = getOrders()
     const arrayOfOptionsHTMLStrings = orders.map(
         (order) => {
             let totalCost = 0
@@ -66,28 +87,20 @@ export const Orders = () => {
             const foundWheel = wheels.find(wheel => wheel.id === order.wheelId)
             totalCost += foundWheel.price
 
-        })
+        }) */
 
 
-    /* 
-     
+/* ++++++++++++
+     SAME OUTPUT, TWO APPROACHES. 
+     1.)
         const foundPaintColor = paintColors.find(
             (paintColorObj) => {
                 if (paintColorObj.id === paintColor.id) {
                     return true
                 }
             }
-        ) */
-
-
-
-    let html = "<ul>"
-    const arrayOfHTML = orders.map((orderObj) => {
-        const singularListItemHtml = buildOrderListItem(orderObj)
-        return singularListItemHtml
-    })
-    html += arrayOfOptionsHTMLStrings.join("")
-    html += "</ul>"
-
-    return html
-}
+        ) 
+        
+        OR 2.) 
+        const foundPaintColor = paintColors.find(paintColor => paintColor.id === order.paintColorId)
+            totalCost += foundPaintColor.price */

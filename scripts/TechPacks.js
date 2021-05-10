@@ -8,13 +8,13 @@ document.addEventListener(
         (changeEvent) => {
             if (changeEvent.target.name === "techPack") {
                 const techPackId = changeEvent.target.value
-                setTechPack(techPackId)
-                for (const techPack of techPacks) {
-                    if (parseInt(techPackId) === techPack.id)
-                        window.alert(`You have chosen ${techPack.type}`)
-                }
+                setTechPack(parseInt(techPackId))
+                    // for (const techPack of techPacks) {
+                    // if (parseInt(techPackId) === techPack.id)
+                    //window.alert(`You have chosen ${techPack.type}`)
             }
         }
+        // }
 
     )
     /* document.addEventListener(
