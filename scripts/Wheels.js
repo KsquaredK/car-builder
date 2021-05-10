@@ -6,14 +6,14 @@ document.addEventListener(
     (changeEvent) => {
         if (changeEvent.target.name === "wheel") {
             const wheelId = changeEvent.target.value
-            setWheel(wheelId)
-            for (const wheel of wheels) {
-                if (parseInt(wheelId) === wheel.id)
+            setWheel(parseInt(wheelId))
+                // for (const wheel of wheels) {
+                // if (parseInt(wheelId) === wheel.id)
 
-                    window.alert(`You have selected ${wheel.sizeType}`)
-            }
+            //window.alert(`You have selected ${wheel.sizeType}`)
         }
     }
+    // }
 )
 
 

@@ -6,16 +6,16 @@ document.addEventListener(
     (changeEvent) => {
         if (changeEvent.target.name === "interior") {
             const interiorId = changeEvent.target.value
-            setInterior(interiorId)
-            for (const interior of interiors) {
-                if (parseInt(interiorId) === interior.id)
-                    window.alert(`You have selected ${interior.colorType}`)
-            }
+            setInterior(parseInt(interiorId))
+                //for (const interior of interiors) {
+                //if (parseInt(interiorId) === interior.id)
+                //window.alert(`You have selected ${interior.colorType}`)
+                // }
+                // }
         }
     }
 
 )
-
 
 export const Interiors = () => {
     let html = "<ul>"
@@ -32,14 +32,3 @@ export const Interiors = () => {
 
     return html
 }
-
-/* 
-if (itemClicked.id.startsWith("celebrity")) { // if the target clicked has an id that starts with..
-                
-                const [, itemClickedId] = itemClicked.id.split("--") //split out all but the value I want
-
-                for (const celebrity of celebrities) { //loop thru celebrity array
-                    
-                    if (celebrity.id === parseInt(itemClickedId)) //if celebrity primary key matches click target id
-                        window.alert(`${celebrity.name} is ${celebrity.sport} star`) 
-*/

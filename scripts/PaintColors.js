@@ -6,12 +6,13 @@ document.addEventListener(
     (changeEvent) => {
         if (changeEvent.target.name === "paintColor") {
             const paintColorId = changeEvent.target.value
-            setPaintColor(paintColorId)
-            for (const paintColor of paintColors) {
-                if (parseInt(paintColorId) === paintColor.id)
+            setPaintColor(parseInt(paintColorId))
+                // for (const paintColor of paintColors) {
+                // if (parseInt(paintColorId) === paintColor.id)
 
-                    window.alert(`You have selected ${paintColor.color}`)
-            }
+            //window.alert(`You have selected ${paintColor.color}`)
+            // }
+
         }
     }
 )
@@ -22,7 +23,7 @@ export const PaintColors = () => {
         // Use .map() for converting objects to <li> elements
     const listItems = paintColors.map(paintColor => {
         return `<li>
-            <input type="radio" name="paintColor" value="${paintColor.id}" /> ${paintColor.color}
+            <input type="radio" name="paintColor" value="${paintColor.id}" checked="checked"/> ${paintColor.color}
         </li>`
     })
 

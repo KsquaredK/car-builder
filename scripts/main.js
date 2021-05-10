@@ -10,6 +10,6 @@ const renderHTML = () => {
 renderHTML()
 
 document.addEventListener("stateChanged", event => {
-    window.alert("State of data has changed. Regenerating HTML...")
+    // window.alert("State of data has changed. Regenerating HTML...")
     renderHTML()
 })

@@ -67,10 +67,16 @@ export const getOrders = () => {
 }
 
 export const addCustomerOrder = () => {
+    // make a copy of current state of user choices
     const newOrder = {...database.orderBuilder }
+        // assign new primary key, one higher than the last one in the array
     newOrder.id = [...database.customOrders].pop().id + 1
+        //assign value of current date to timestamp property
     newOrder.timestamp = Date.now()
+        //push this newly defined object into orders array
     database.customOrders.push(newOrder)
+        // clear the orderBuilder object of temp data for next state (data from user input)
     database.orderBuilder = {}
+        //notify other modules of change of state
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
